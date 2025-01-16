@@ -1,9 +1,11 @@
 import React from 'react';
 import Logo from '../assets/logo1.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
-    <header className="bg-blue-600 text-white">
+    <header className="bg-blue-600 text-white sticky top-0">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <img
@@ -29,7 +31,16 @@ const Header = () => {
           <button className="bg-yellow-400 text-black px-4 py-2 hover:bg-yellow-500">
             Login
           </button>
-          <span className="cursor-pointer">View Cart</span>
+        <div className='cursor-pointer flex'>
+        <div className="relative">
+        <span className="cursor-pointer"><FontAwesomeIcon icon={faCartShopping} className='text-2xl' /></span>
+        <span className="absolute -top-2 -right-2 bg-red-600 text-xs rounded-full px-2 py-0.5">
+          3
+        </span>
+      </div>
+        <div className='font-bold pl-2'>Cart</div>
+
+        </div>
           <span className="cursor-pointer">More</span>
           <div className="relative cursor-pointer">
             <svg
