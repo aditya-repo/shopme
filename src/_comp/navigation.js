@@ -16,7 +16,7 @@ const categories = [
 
 const Navigation = () => {
     return (
-        <nav className="bg-white text-gray-800 border border-b-gray-200">
+        <nav className="bg-white text-gray-800 border border-b-gray-200 hidden md:flex z-10">
             <div className="container mx-auto px-4 py-2 flex items-center justify-between">
                 {categories.map((category, index) => (
                     <div key={index} className="flex items-center space-x-1">

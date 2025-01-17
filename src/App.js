@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Header from "./_comp/header";
 import Navigation from "./_comp/navigation";
 import Product from "./_comp/product";
@@ -9,6 +10,7 @@ function App() {
     <Header />
     <Navigation />
     <Product />
+    <Outlet />
     </div>
   );
 }
