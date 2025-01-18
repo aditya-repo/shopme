@@ -1,4 +1,4 @@
-import { faBell, faBox, faClose, faGift, faHeart, faHeartPulse, faLanguage, faList, faSliders, faSun, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBox, faClose, faGift, faHeart, faLanguage, faList, faSliders, faSun, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 

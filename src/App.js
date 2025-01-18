@@ -1,15 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./_comp/header";
 import Navigation from "./_comp/navigation";
-import Product from "./_comp/product";
-import ProductList from "./_comp/productlist";
 
 function App() {
+  const excludedPath = ['/']
+  const location = useLocation()
+  const isExcluded = excludedPath.includes(location.pathname)
   return (
     <div className="bg-gray-100">
     <Header />
-    <Navigation />
-    <Product />
+    {!isExcluded && <Navigation />}
     <Outlet />
     </div>
   );

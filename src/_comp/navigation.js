@@ -21,10 +21,7 @@ const Navigation = () => {
                 {categories.map((category, index) => (
                     <div key={index} className="flex items-center space-x-1">
                         <span>{category}</span>
-                        <FontAwesomeIcon
-                            icon={faCaretDown}
-                            className="text-gray-700 h-2.5 w-2.5"
-                        />
+                        <FontAwesomeIcon icon={faCaretDown} className="text-gray-700 h-2.5 w-2.5" />
                     </div>
                 ))}
             </div>

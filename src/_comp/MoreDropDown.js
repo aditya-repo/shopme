@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DropDown from "./dropdown";
-import { faBell, faBox, faCartPlus, faGears, faHeart, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBox, faCartPlus, faGears } from "@fortawesome/free-solid-svg-icons";
 
 const MoreDropdown = () => {
   const [hover, setHover] = useState(false);

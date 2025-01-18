@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DropDown from "./dropdown";
-import { faBox, faCartPlus, faHeart, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBox, faHeart, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const LoginDropdown = () => {
   const [hover, setHover] = useState(false);
@@ -16,11 +16,10 @@ const LoginDropdown = () => {
       </button>
 
       {hover && (
-        <DropDown width={"160px"}
+        <DropDown width={"200px"}
           tab={[
-            {name: "My Profile", link: "/profile", icon: faUser},
-            {name: "My Orders", link: "/orders", icon: faBox},
-            {name: "My Cart", link: "/cart", icon: faCartPlus},
+            {name: "My Profile", link: "/account", icon: faUser},
+            {name: "My Orders", link: "/order", icon: faBox},
             {name: "My Wishlist", link: "/wishlist", icon: faHeart},
             {name: "Logout", link: "/logout", icon: faSignOut},
           ]}

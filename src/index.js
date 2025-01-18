@@ -3,28 +3,46 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Product from './pages/product';
+import ProductList from './pages/productlist';
+import Navigation from './_comp/navigation';
+import SignupPage from './pages/register';
+import VerifyPage from './pages/verify';
+import AccountPage from './pages/account';
+import OrderPage from './pages/order';
+import WishlistPage from './pages/wishlist';
+import OrderIdPage from './pages/orderid';
 
 const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<App />} />
-        <Route path='login' element={<App />} />
-        <Route path='register' element={<App />} />
-        <Route path='forgot-pass' element={<App />} />
-        <Route path=':category' element={<App />}>
-          <Route path=':product' element={<App />} />
+        <Route path="/" element={<App />}>
+          {/* Root path rendering */}
+          <Route element={<Navigation />} />
+
+          {/* Public Routes */}
+          <Route path="login" element={<SignupPage />} />
+          <Route path="verify" element={<VerifyPage />} />
+          <Route path="register" element={<SignupPage />} />
+
+          {/* Category and Product Routes */}
+          <Route path=":category" element={<ProductList />} />
+            <Route path=":category/:product" element={<Product />} />
+
+          {/* Account Routes */}
+          <Route path="order" element={<OrderPage />} />
+          <Route path="wishlist" element={<WishlistPage />} />
+          <Route path="account" element={<AccountPage />} />
+          <Route path="logout" element={<App />} />
+          <Route path="order/:orderid" element={<OrderIdPage />} />
+
+          {/* Cart Route */}
+          <Route path="viewcart" element={<App />} />
         </Route>
-        <Route path='account' element={<App />}>
-          <Route path='profile' element={<App />} />
-          <Route path='logout' element={<App />} />
-          <Route path='order' element={<App />}>
-            <Route path=':orderid' element={<App />} />
-          </Route>
-        </Route>
-        <Route path='viewcart' element={<App />} />
       </Routes>
     </BrowserRouter>
+
   )
 
 }

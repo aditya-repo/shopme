@@ -1,4 +1,4 @@
-import { faCircleExclamation, faHeart, faStar, faTag } from '@fortawesome/free-solid-svg-icons'
+import { faCircleExclamation, faStar, faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import ProductImage from '../assets/product.webp'
