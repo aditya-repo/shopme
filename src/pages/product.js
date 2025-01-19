@@ -4,16 +4,24 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { API } from '../config/url'
 import { Link, useParams } from 'react-router-dom'
+import { useCart, useReducerContext } from '../config/context'
+import CART from '../config/constant'
 
 const Product = () => {
     const { id } = useParams()
     const [product, setProduct] = useState({})
 
+    const dispatch = useReducerContext()
+
+    const data = useCart()
+
+    console.log(data);
+    
+
     useEffect(() => {
         const fetch = async () => {
             const response = await axios.get(API.PRODUCTID(id))
-            console.log(response.data);
-            
+          
             setProduct(response.data)
             console.log(response.data.rating.rate);
         }
@@ -55,7 +63,7 @@ const Product = () => {
                             </div>
                         </div>
                         <div className='flex justify-between items-center flex-auto md:mt-6 gap-1 mt-1 max-w-[392px]'>
-                            <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-yellow-600 text-white hover:bg-yellow-700">
+                            <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-yellow-600 text-white hover:bg-yellow-700" onClick={()=> dispatch({type: CART.ADD_ITEM, payload: product})}>
                                 Add to Cart
                             </div>
                             <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-blue-600 text-white hover:bg-blue-700">

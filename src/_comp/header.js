@@ -5,6 +5,7 @@ import { faCartShopping, faSearch } from '@fortawesome/free-solid-svg-icons';
 import LoginDropdown from './LoginDropdown';
 import MoreDropdown from './MoreDropDown';
 import Sidebar from './sidebar';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -12,9 +13,9 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
 
         {/* Mobile Menu */}
-          <div className='md:hidden'>
-            <Sidebar />
-          </div>
+        <div className='md:hidden'>
+          <Sidebar />
+        </div>
 
         <div className="flex items-center space-x-2">
           <img
@@ -32,22 +33,24 @@ const Header = () => {
             className="flex-grow px-4 py-2 text-gray-700  focus:outline-none hidden lg:inline"
           />
           <button className="bg-white text-gray-600 px-4 py-2 hidden lg:inline">
-          <FontAwesomeIcon icon={faSearch} className='text-lg' />
+            <FontAwesomeIcon icon={faSearch} className='text-lg' />
           </button>
         </div>
 
         <div className="flex items-center space-x-6">
           <LoginDropdown />
-        <div className='cursor-pointer flex'>
-        <div className="relative">
-        <span className="cursor-pointer"><FontAwesomeIcon icon={faCartShopping} className='text-2xl' /></span>
-        <span className="absolute -top-2 -right-2 bg-red-600 text-xs rounded-full px-2 py-0.5">
-          3
-        </span>
-      </div>
-        <div className='font-bold pl-2 hidden md:block'>Cart</div>
-
-        </div>
+          <Link to={'/cart'}>
+          
+          <div className='cursor-pointer flex'>
+            <div className="relative">
+              <span className="cursor-pointer"><FontAwesomeIcon icon={faCartShopping} className='text-2xl' /></span>
+              <span className="absolute -top-2 -right-2 bg-red-600 text-xs rounded-full px-2 py-0.5">
+                3
+              </span>
+            </div>
+            <div className='font-bold pl-2 hidden md:block'>Cart</div>
+          </div>
+          </Link>
           <span className="cursor-pointer"><MoreDropdown /></span>
         </div>
 

@@ -12,6 +12,8 @@ import AccountPage from './pages/account';
 import OrderPage from './pages/order';
 import WishlistPage from './pages/wishlist';
 import OrderIdPage from './pages/orderid';
+import ViewCartPage from './pages/viewcart';
+import { CartProvider } from './config/context';
 
 const Main = () => {
   return (
@@ -38,7 +40,7 @@ const Main = () => {
           <Route path="order/:orderid" element={<OrderIdPage />} />
 
           {/* Cart Route */}
-          <Route path="viewcart" element={<App />} />
+          <Route path="cart" element={<ViewCartPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -50,6 +52,9 @@ const Main = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  <CartProvider>
+  
     <Main />
+  </CartProvider>
   </React.StrictMode>
 );
