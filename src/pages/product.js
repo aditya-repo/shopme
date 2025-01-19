@@ -1,9 +1,26 @@
 import { faCircleExclamation, faStar, faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-import ProductImage from '../assets/product.webp'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { API } from '../config/url'
+import { Link, useParams } from 'react-router-dom'
 
 const Product = () => {
+    const { id } = useParams()
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        const fetch = async () => {
+            const response = await axios.get(API.PRODUCTID(id))
+            console.log(response.data);
+            
+            setProduct(response.data)
+            console.log(response.data.rating.rate);
+        }
+
+        fetch()
+    }, [id])
+
     return (
         <div className='container mx-auto px-3 py-2 z-0'>
             <div className="grid grid-cols-1 md:grid-cols-[520px_1fr] gap-2">
@@ -11,51 +28,52 @@ const Product = () => {
                     <div className='overflow-x-auto max-w-[392px] md:mt-0 mt-2 flex md:block items-center'>
                         <div className='w-[64px] mr-1 md:block flex gap-1.5'>
                             <div className='p-1 border border-gray-200 border-b-0'>
-                                <div className='h-[56px] w-[54px]'><img src={ProductImage} alt='Mivi Speaker' className='w-[100%]' /></div>
+                                <div className='h-[56px] w-[54px]'><img src={product.image} alt='Mivi Speaker' className='w-[100%] h-[100%]' /></div>
                             </div>
                             <div className='p-1 border border-gray-200 border-b-0'>
-                                <div className='h-[56px] w-[54px]'><img src={ProductImage} alt='Mivi Speaker' className='w-[100%]' /></div>
+                                <div className='h-[56px] w-[54px]'><img src={product.image} alt='Mivi Speaker' className='w-[100%] h-[100%]' /></div>
                             </div>
                             <div className='p-1 border border-gray-200 border-b-0'>
-                                <div className='h-[56px] w-[54px]'><img src={ProductImage} alt='Mivi Speaker' className='w-[100%]' /></div>
+                                <div className='h-[56px] w-[54px]'><img src={product.image} alt='Mivi Speaker' className='w-[100%] h-[100%]' /></div>
                             </div>
                             <div className='p-1 border border-gray-200 border-b-0'>
-                                <div className='h-[56px] w-[54px]'><img src={ProductImage} alt='Mivi Speaker' className='w-[100%]' /></div>
+                                <div className='h-[56px] w-[54px]'><img src={product.image} alt='Mivi Speaker' className='w-[100%] h-[100%]' /></div>
                             </div>
                             <div className='p-1 border border-gray-200 border-b-0'>
-                                <div className='h-[56px] w-[54px]'><img src={ProductImage} alt='Mivi Speaker' className='w-[100%]' /></div>
+                                <div className='h-[56px] w-[54px]'><img src={product.image} alt='Mivi Speaker' className='w-[100%] h-[100%]' /></div>
                             </div>
                             <div className='p-1 border border-gray-200'>
-                                <div className='h-[56px] w-[54px]'><img src={ProductImage} alt='Mivi Speaker' className='w-[100%]' /></div>
+                                <div className='h-[56px] w-[54px]'><img src={product.image} alt='Mivi Speaker' className='w-[100%] h-[100%]' /></div>
                             </div>
                         </div>
                     </div>
 
                     <div className='flex-grow items-center justify-center bg-white '>
                         <div>
-                            <div className="bg-red-200 max-h-[392px] max-w-[392px] mb-2 z-0">
-                                <img src={ProductImage} alt="Mivi Speaker" className="w-full" />
+                            <div className="h-[392px] max-w-[392px] mb-2 z-0 p-5">
+                                <img src={product.image} alt={product.title} className="w-[80%] mx-auto h-[80%] cover" />
                             </div>
-                            <div className='flex justify-between items-center flex-auto md:mt-6 gap-1 mt-1 max-w-[392px]'>
-                                <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-yellow-600 text-white hover:bg-yellow-700">
-                                    Add to Cart
-                                </div>
-                                <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-blue-600 text-white hover:bg-blue-700">
-                                    Buy Now
-                                </div>
+                        </div>
+                        <div className='flex justify-between items-center flex-auto md:mt-6 gap-1 mt-1 max-w-[392px]'>
+                            <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-yellow-600 text-white hover:bg-yellow-700">
+                                Add to Cart
+                            </div>
+                            <div className="md:p-4 px-4 py-2  text-lg text-center basis-1/2 bg-blue-600 text-white hover:bg-blue-700">
+                                Buy Now
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='overflow-y-auto'>
                     <div className='bg-white p-6'>
-                        <h1 className='text-2xl '>Mivi Fort H30,4000 mAh, 6 Hours Playtime, BT v5.1 30 W Bluetooth Soundbar  (Black, 2.0 Channel)</h1>
+                        <div className='text-xs text-gray-400'><span className='hover:underline'>Home</span> / <Link to={'/products'}><span className='capitalize hover:underline'>{product.category}</span></Link> / <span className='hover:underline capitalize'>{product.title}</span></div>
+                        <h1 className='md:text-2xl text-sm'>{product.title}</h1>
                         <div className='flex gap-2 items-center'>
                             <div className='flex items-center px-2 py-1 bg-green-800 text-xs text-white gap-1 rounded'><span> 4.2 </span> <FontAwesomeIcon icon={faStar} /></div>
                             <div className='text-gray-600 text-sm'>78,165 Ratings</div>
                         </div>
                         <p className='text-green-600 text-sm font-bold mt-2'>Special Price</p>
-                        <p className='text-gray-800 flex items-center'><span className='font-semibold text-3xl pr-3'>₹ 1,999</span> <span className='px-1 line-through text-gray-500 pr-3'> ₹ 5,999 </span><span className='text-green-600 text-sm'>66 % off</span> <span><FontAwesomeIcon icon={faCircleExclamation} className='text-green-700 pl-2' /></span></p>
+                        <p className='text-gray-800 flex items-center'><span className='font-semibold text-3xl pr-3'>₹ {product.price}</span> <span className='px-1 line-through text-gray-500 pr-3'> ₹ 5,999 </span><span className='text-green-600 text-sm'>66 % off</span> <span><FontAwesomeIcon icon={faCircleExclamation} className='text-green-700 pl-2' /></span></p>
                         <p className='text-gray-900 font-bold py-2 mb-2'>Available offers</p>
                         <div className='text-sm mb-2 flex gap-2 items-center'><FontAwesomeIcon icon={faTag} className='text-lg text-green-600' /><span className='font-semibold'>Bank Offer </span><span>5% Unlimited Cashback on Flipkart Axis Bank Credit Card</span></div>
                         <div className='text-sm mb-2 flex gap-2 items-center'><FontAwesomeIcon icon={faTag} className='text-lg text-green-600' /><span className='font-semibold'>Bank Offer </span><span>10% off up to ₹1250 on HDFC Bank Credit Card Transactions. Min Txn Value: ₹4,999</span></div>

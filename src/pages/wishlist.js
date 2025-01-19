@@ -2,81 +2,37 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProductImage from '../assets/product.webp'
 import MyAccountLayout from "../_comp/myaccount";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API } from "../config/url";
 
 const WishlistPage = () => {
-    const wishlistArray = [
-        {
-            name: "Realme 3 Buds 3",
-            price: 1999,
-            originalPrice: 5999,
-            discount: "66%",
-            deliveryDate: "22 Jan",
-        },
-        {
-            name: "Redmi Note 12",
-            price: 12999,
-            originalPrice: 16999,
-            discount: "24%",
-            deliveryDate: "25 Jan",
-        },
-        {
-            name: "OnePlus Nord CE",
-            price: 24999,
-            originalPrice: 29999,
-            discount: "17%",
-            deliveryDate: "23 Jan",
-        },
-        {
-            name: "Samsung Galaxy M14",
-            price: 11999,
-            originalPrice: 14999,
-            discount: "20%",
-            deliveryDate: "21 Jan",
-        },
-        {
-            name: "Vivo Y16",
-            price: 8999,
-            originalPrice: 10999,
-            discount: "18%",
-            deliveryDate: "24 Jan",
-        },
-        {
-            name: "Oppo Enco Buds",
-            price: 1499,
-            originalPrice: 3499,
-            discount: "57%",
-            deliveryDate: "20 Jan",
-        },
-        {
-            name: "Sony WH-1000XM4",
-            price: 27999,
-            originalPrice: 34999,
-            discount: "20%",
-            deliveryDate: "22 Jan",
-        },
-        {
-            name: "JBL Flip 6",
-            price: 11999,
-            originalPrice: 14999,
-            discount: "20%",
-            deliveryDate: "26 Jan",
-        },
-        {
-            name: "Apple AirPods Pro",
-            price: 24999,
-            originalPrice: 29999,
-            discount: "17%",
-            deliveryDate: "28 Jan",
-        },
-        {
-            name: "Boat Rockerz 255",
-            price: 999,
-            originalPrice: 1999,
-            discount: "50%",
-            deliveryDate: "19 Jan",
-        },
-    ];
+
+    const [products, setProducts] = useState([])
+    const [errors, setErrors] = useState(null)
+
+    const [searchParams] = useSearchParams();
+    const sort = searchParams.get("sort");
+
+    useEffect(() => {
+        const fetch = async () => {
+            
+            try {
+                let response
+                if (!sort) {
+                    response = await axios.get(API.PRODUCTIDSEARCH())
+                } else {
+                    response = await axios.get(API.PRODUCTIDSEARCH(sort))
+                }
+               
+                setProducts(response.data)
+            } catch (error) {
+                setErrors(errors)
+            }
+        }
+        fetch()
+    }, [sort, errors])
 
     return (
         <MyAccountLayout>
@@ -84,7 +40,7 @@ const WishlistPage = () => {
                 <div className="flex px-4 py-2  items-center bg-white shadow">
                     <div className="px-5 py-2 text-lg text-gray-800 text-center"><span className="ml-2"> My Wishlist ( 5 )</span></div>
                 </div>
-                {wishlistArray.map((item) => (<WishlistSingleItem item={item} />))}
+                {products.map((item) => (<WishlistSingleItem item={item} />))}
             </div>
         </MyAccountLayout>
     )
@@ -95,14 +51,14 @@ const WishlistSingleItem = ({ item, index }) => {
     console.log(item);
 
     return (
-        <Link to={'/kjd/kjdf'}>
+        <Link to={`/product/${item.id}`}>
             <div key={index} className="flex justify-between shadow px-4 py-2 mt-2 bg-white">
                 <div className="flex p-4">
-                    <img src={ProductImage} className="max-w-20" alt="Phone Cover" />
+                    <img src={item.image} className="max-w-20" alt="Phone Cover" />
                     <div className="px-3">
-                        <h3 className="">{name}</h3>
+                        <h3 className="">{item.title}</h3>
                         <p className='text-gray-800 flex items-center'><span className='font-semibold text-xl pr-3'>₹ {price}</span> <span className='px-1 line-through text-gray-500 pr-3'> ₹ {originalPrice} </span><span className='text-green-600 text-sm'>{discount} off</span></p>
-                        <p className="text-gray-800 text-xs  md:hidden">{deliveryDate}</p>
+                        <p className="text-gray-800 text-xs  md:hidden">22 Jan</p>
                     </div>
                 </div>
                 <div className="px-3 p-4">

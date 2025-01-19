@@ -1,11 +1,12 @@
 import { faBox, faCaretRight, faCircle, faComments, faStar } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ProductImage from '../assets/product.webp'
+import { Link } from "react-router-dom"
 
 const OrderIdPage = () => {
     return (
         <div className="container mx-auto pb-20">
-            <div className="flex gap-3">
+            <div className="md:flex flex-cols gap-3">
                 <div className="basis-3/5">
                     <div className="bg-white mt-3 p-6 pb-4">
                         <div className="flex border-b border-gray-200">
@@ -17,6 +18,7 @@ const OrderIdPage = () => {
                         <div className="text-gray-900 text-sm mt-3 font-bold">Manage who can access</div>
                     </div>
                     <div className="bg-white mt-3 mb-2 p-6 pb-2">
+                        <Link to={'/product/1'}>
                         <div className="flex justify-between pb-8 border-b border-gray-200">
                             <div className="">
                                 <div className="text-gray-800">UGAOO Neem Cake Powder for Plants- Organic Fertilizer & Pest Repellent Fertilizer </div>
@@ -25,6 +27,7 @@ const OrderIdPage = () => {
                             </div>
                             <img src={ProductImage} alt="Neem Cake" className="w-20" />
                         </div>
+                        </Link>
                         <div className="bg-white border-b border-gray-200 py-6">
                             <p className="mb-4"><FontAwesomeIcon icon={faCircle} className="text-green-600 text-xs mr-3" />Order Confirmed</p>
                             <p className="mb-4"><FontAwesomeIcon icon={faCircle} className="text-green-600 text-xs mr-3" />Order Delivered</p>

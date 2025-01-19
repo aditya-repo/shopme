@@ -27,8 +27,8 @@ const Main = () => {
           <Route path="register" element={<SignupPage />} />
 
           {/* Category and Product Routes */}
-          <Route path=":category" element={<ProductList />} />
-            <Route path=":category/:product" element={<Product />} />
+          <Route path="products" element={<ProductList />} />
+          <Route path=":category/:id" element={<Product />} />
 
           {/* Account Routes */}
           <Route path="order" element={<OrderPage />} />
