@@ -6,17 +6,19 @@ import LoginDropdown from './LoginDropdown';
 import MoreDropdown from './MoreDropDown';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
+import { useCart } from '../config/context';
 
 const Header = () => {
+  const {items} = useCart()
   return (
-    <header className="bg-blue-600 text-white sticky top-0">
+    <header className="bg-blue-600 text-white sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
 
         {/* Mobile Menu */}
         <div className='md:hidden'>
           <Sidebar />
         </div>
-
+        <Link to={'/'}>
         <div className="flex items-center space-x-2">
           <img
             src={Logo}
@@ -25,6 +27,7 @@ const Header = () => {
           />
           <span className="text-lg font-bold hidden md:inline">Flipkart</span>
         </div>
+        </Link>
 
         <div className="lg:flex items-center flex-grow mx-4">
           <input
@@ -45,7 +48,7 @@ const Header = () => {
             <div className="relative">
               <span className="cursor-pointer"><FontAwesomeIcon icon={faCartShopping} className='text-2xl' /></span>
               <span className="absolute -top-2 -right-2 bg-red-600 text-xs rounded-full px-2 py-0.5">
-                3
+                {items.length}
               </span>
             </div>
             <div className='font-bold pl-2 hidden md:block'>Cart</div>

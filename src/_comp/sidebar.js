@@ -7,7 +7,7 @@ const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
-            <div className="flex">
+            <div className="flex relative z-100">
                 <button className="text-white pr-6" onClick={()=> setIsOpen(true)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

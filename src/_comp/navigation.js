@@ -1,6 +1,7 @@
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const categories = [
     "Electronics",
@@ -20,8 +21,10 @@ const Navigation = () => {
             <div className="container mx-auto px-4 py-2 flex items-center justify-between">
                 {categories.map((category, index) => (
                     <div key={index} className="flex items-center space-x-1">
+                    <Link to={'/products'}>
                         <span>{category}</span>
                         <FontAwesomeIcon icon={faCaretDown} className="text-gray-700 h-2.5 w-2.5" />
+                    </Link>
                     </div>
                 ))}
             </div>

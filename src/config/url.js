@@ -11,6 +11,7 @@ export const API = {
     PRODUCTS: () => `${APIBASE}/products`,
     PRODUCTID: (id) => `${APIBASE}/products/${id}`,
     PRODUCTIDSEARCH: (param='asc') => `${APIBASE}/products?sort=${param}`,
+    CATEGORY: ()=> `${APIBASE}/products/categories`
 }
 
 export default URL

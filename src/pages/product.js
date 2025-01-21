@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { API } from '../config/url'
 import { Link, useParams } from 'react-router-dom'
-import { useCart, useReducerContext } from '../config/context'
+import { useReducerContext } from '../config/context'
 import CART from '../config/constant'
 
 const Product = () => {
@@ -12,11 +12,6 @@ const Product = () => {
     const [product, setProduct] = useState({})
 
     const dispatch = useReducerContext()
-
-    const data = useCart()
-
-    console.log(data);
-    
 
     useEffect(() => {
         const fetch = async () => {
