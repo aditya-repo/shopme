@@ -15,6 +15,7 @@ import OrderIdPage from './pages/orderid';
 import ViewCartPage from './pages/viewcart';
 import { CartProvider } from './config/context';
 import HomePage from './pages/home';
+import LoginPages from './pages/login';
 
 const Main = () => {
   return (
@@ -25,7 +26,7 @@ const Main = () => {
           <Route element={<Navigation />} />
           <Route path='/' element={<HomePage />} />
           {/* Public Routes */}
-          <Route path="login" element={<SignupPage />} />
+          // <Route path="login" element={<LoginPages />} />
           <Route path="verify" element={<VerifyPage />} />
           <Route path="register" element={<SignupPage />} />
 
