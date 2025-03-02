@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import AuthPage from "../_comp/auth";
-import { useState } from "react";
 import { API } from "../config/url";
 import axios from "axios";
+import { useState } from "react";
 import { useFormik } from "formik";
 import loginSchema, { initialLoginValues } from "../config/validate/login";
 
 const LoginPages = () => {
+
+    const [errors, setErrors] = useState(null);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        password2: "",
+    });
     
     const formik = useFormik({
         initialValues: initialLoginValues }, {validationSchema: loginSchema, onSubmit: (values) => {
