@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "All Category",
+        "imageUrl": "https://rukminim2.flixcart.com/fk-p-flap/125/125/image/280e9f3a4d60b598.jpg?q=60",
+        "href": "/products"
+    },
+    {
+        "id": 2,
+        "name": "Electronics",
+        "imageUrl": "https://rukminim2.flixcart.com/fk-p-flap/125/125/image/4002c69694823695.jpg?q=60",
+        "href": "/product/13"
+    },
+    {
+        "id": 3,
+        "name": "Men",
+        "imageUrl": "https://rukminim2.flixcart.com/fk-p-flap/125/125/image/82942fda01daf9d4.jpg?q=60",
+        "href": "/product/3"
+    },
+    {
+        "id": 4,
+        "name": "Women",
+        "imageUrl": "https://rukminim2.flixcart.com/fk-p-flap/125/125/image/43be6ab872688e44.jpg?q=60",
+        "href": "/product/16"
+    }
+]

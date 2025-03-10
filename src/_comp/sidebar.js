@@ -38,7 +38,10 @@ const Sidebar = () => {
                         // onClick={(e) => e.stopPropagation()} // Prevent click propagation to close the sidebar
                     >
                         <div className="px-4 py-5 flex items-center justify-between border-b border-gray-20 bg-blue-600 text-white">
+
+                        <Link to={'/login'}>
                         <div className="flex items-center"><FontAwesomeIcon icon={faUserCircle} className="mr-5 text-2xl" />Login & Signup</div>
+                        </Link>
                         <FontAwesomeIcon icon={faClose} className="text-2xl cursor-pointer" onClick={() => setIsOpen(false)} />
                         </div>
                         <div className="px-4 py-2"><FontAwesomeIcon icon={faUser} className="pr-3"/> Supercoin</div>

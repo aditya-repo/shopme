@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Product from './pages/product';
 import ProductList from './pages/productlist';
 import Navigation from './_comp/navigation';
-import SignupPage from './pages/register';
+// import SignupPage from './pages/register';
 import VerifyPage from './pages/verify';
 import AccountPage from './pages/account';
 import OrderPage from './pages/order';
@@ -16,32 +16,32 @@ import ViewCartPage from './pages/viewcart';
 import { CartProvider } from './config/context';
 import HomePage from './pages/home';
 import LoginPages from './pages/login';
+import ProtectedRoute from './config/protectedRoutes';
+import { AuthProvider } from './config/authcontext';
+import RegisterPage from './pages/new-user';
 
 const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          {/* Root path rendering */}
-          <Route element={<Navigation />} />
+        { /*<Route element={<Navigation />} /> */}
           <Route path='/' element={<HomePage />} />
-          {/* Public Routes */}
-          // <Route path="login" element={<LoginPages />} />
+          <Route path="login" element={<LoginPages />} />
           <Route path="verify" element={<VerifyPage />} />
-          <Route path="register" element={<SignupPage />} />
+          <Route path="register" element={<RegisterPage />} />
 
-          {/* Category and Product Routes */}
           <Route path="products" element={<ProductList />} />
           <Route path=":category/:id" element={<Product />} />
 
-          {/* Account Routes */}
-          <Route path="order" element={<OrderPage />} />
-          <Route path="wishlist" element={<WishlistPage />} />
-          <Route path="account" element={<AccountPage />} />
-          <Route path="logout" element={<App />} />
-          <Route path="order/:orderid" element={<OrderIdPage />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="order" element={<OrderPage />} />
+            <Route path="wishlist" element={<WishlistPage />} />
+            <Route path="order/:orderid" element={<OrderIdPage />} />
+            <Route path="account" element={<AccountPage />} />
+            <Route path="logout" element={<App />} />
+          </Route>
 
-          {/* Cart Route */}
           <Route path="cart" element={<ViewCartPage />} />
         </Route>
       </Routes>
@@ -54,9 +54,10 @@ const Main = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <CartProvider>
-  
-    <Main />
-  </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <Main />
+      </CartProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

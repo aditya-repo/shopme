@@ -1,8 +1,10 @@
-const BASE = 'http://localhost'
+const BASE = 'http://localhost:4050'
 
 const URL = {
     ROOT: () => BASE,
-    ORDERS: () => `${BASE}/orders`
+    ORDERS: () => `${BASE}/orders`,
+    LOGIN: ()=> `${BASE}/signin`,
+    REGISTER: ()=> `${BASE}/signup`,
 }
 
 const APIBASE = 'https://fakestoreapi.com'

@@ -7,16 +7,16 @@ const registerSchema = Yup.object().shape({
         .required("Password is required")
         .min(6, "Password must be at least 6 characters")
         .max(40, "Password must not exceed 40 characters"),
-    confirmPassword: Yup.string()
+    password2: Yup.string()
         .required("Confirm Password is required")
         .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
-const registerInitialValues = {
+export const registerInitialValues = {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    password2: "",
 };
 
 export default registerSchema;
